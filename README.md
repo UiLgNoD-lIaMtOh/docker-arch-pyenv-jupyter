@@ -40,7 +40,8 @@
       .                                                       
       ├── Dockerfile                                         # 这个是 构建 pyenv+jupyter 的 Dockerfile 配置文件  
       ├── README.md                                          # 这个是 描述 文件  
-      ├── docker-compose.yml                                 # # 这个是构建 pyenv+jupyter 的 docker-compose.yml 配置文件  
+      ├── docker-compose-amd64.yml                           # 这个是构建 pyenv+jupyter amd64 的 docker-compose.yml 配置文件  
+      ├── docker-compose-arm64.yml                           # 这个是构建 pyenv+jupyter arm64 的 docker-compose.yml 配置文件  
       └── package                                            # 这个是构建 pyenv+jupyter 的脚本文件材料所在目录   
           ├── init.sh                                        # 这个是初始化 bash shell 环境脚本文件  
           ├── install.sh                                     # 这个是构建 pyenv+jupyter 镜像的时候在容器内执行流程的脚本   
@@ -55,18 +56,31 @@
     # 进入目录
     cd docker-arch-pyenv-jupyter/
     
-    # 无缓存构建
-    docker build --no-cache --platform "linux/arm64/v8" -f Dockerfile -t UiLgNoD-lIaMtOh/alpine-pyenv-jupyter:arm64v8 . ; docker builder prune -fa ; docker rmi $(docker images -qaf dangling=true)  
-    # 或者这么构建也可以二选一
-    docker-compose build --no-cache ; docker builder prune -fa ; docker rmi $(docker images -qaf dangling=true)
+    # 无缓存构建  
+    ## arm64v8  
+    docker build --no-cache --platform "linux/arm64/v8" -f Dockerfile -t UiLgNoD-lIaMtOh/alpine-pyenv-jupyter:arm64v8 . ; docker builder prune -fa ; docker rmi $(docker images -qaf dangling=true)   
+    ## amd64  
+    docker build --no-cache --platform "linux/amd64" -f Dockerfile -t UiLgNoD-lIaMtOh/alpine-pyenv-jupyter:amd64 . ; docker builder prune -fa ; docker rmi $(docker images -qaf dangling=true)  
+    
+    # 或者这么构建也可以  
+    ## arm64v8  
+    docker-compose -f docker-compose-arm64.yml build --no-cache ; docker -f docker-compose-arm64.yml builder prune -fa ; docker rmi $(docker images -qaf dangling=true)
+    ## amd64  
+    docker-compose -f docker-compose-amd64.yml build --no-cache ; docker -f docker-compose-amd64.yml builder prune -fa ; docker rmi $(docker images -qaf dangling=true)
     
     # 构建完成后修改 docker-compose.yml 后启动享用，默认密码 123456
     # 初始密码修改环境变量字段 PASSWORD 详细请看 docker-compose.yml
-    # 端口默认 8888
-    docker-compose up -d --force-recreate
+    # 端口默认 8888  
+    ## arm64v8
+    docker-compose -f docker-compose-arm64.yml up -d --force-recreate
+    ## amd64  
+    docker-compose -f docker-compose-amd64.yml up -d --force-recreate
     
     # 也可以查看日志看看有没有问题 ,如果失败了就再重新尝试看看只要最后不报错就好   
-    docker-compose logs -f
+    ## arm64v8  
+    docker-compose -f docker-compose-arm64.yml logs -f
+    ## amd64  
+    docker-compose -f docker-compose-amd64.yml logs -f
 
 ## 默认密码以及修改
     # 别担心我料到这一点了，毕竟我自己还要用呢
