@@ -12,7 +12,7 @@
 </a>
 
 ## ghrc.io
-镜像仓库链接：[https://github.com/UiLgNoD-lIaMtOh/docker-arch-pyenv-jupyter/pkgs/container/custom-ubuntu-topfreeproxies](https://github.com/UiLgNoD-lIaMtOh/docker-arch-pyenv-jupyter/pkgs/container/custom-ubuntu-topfreeproxies)  
+镜像仓库链接：[https://github.com/UiLgNoD-lIaMtOh/docker-arch-pyenv-jupyter/pkgs/container/docker-arch-pyenv-jupyter](https://github.com/UiLgNoD-lIaMtOh/docker-arch-pyenv-jupyter/pkgs/container/docker-arch-pyenv-jupyter)  
 
 ## 描述
 1.为了实现 actions workflow 自动化 docker 构建运行，需要添加 `GITHUB_TOKEN` 环境变量，这个是访问 GitHub API 的令牌，可以在 GitHub 主页，点击个人头像，Settings -> Developer settings -> Personal access tokens -> Tokens (classic) -> Generate new token -> Generate new token (classic) ，设置名字为 GITHUB_TOKEN 接着要配置 环境变量有效时间，勾选环境变量作用域 repo write:packages workflow 和 admin:repo_hook 即可，最后点击Generate token，如图所示
