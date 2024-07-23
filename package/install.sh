@@ -44,8 +44,17 @@ download() {
     echo $URI_DOWNLOAD
     # 下载文件，可续传并打印进度
     wget -t 3 -T 10 --verbose --show-progress=on --progress=bar --no-check-certificate --hsts-file=/tmp/wget-hsts -c "${URI_DOWNLOAD}" -O"/tmp/OpenJDK-jdk_hotspot.tar.gz"
+
+    # github 项目 SpencerPark/IJava
+    URI="SpencerPark/IJava"
+    # 从 SpencerPark/IJava github中提取全部 tag 版本，获取最新版本赋值给 VERSION 后打印
+    VERSION=$(curl -sL "https://github.com/$URI/releases" | grep -oP '(?<=\/releases\/tag\/)[^"]+' | head -n 1)
+    echo $VERSION
+    # 拼接下载链接 URI_DOWNLOAD 后打印 v1.3.0
+    URI_DOWNLOAD="https://github.com/$URI/releases/download/$VERSION/ijava-$(echo $VERSION | sed 's;^v;;g').zip"
+    echo $URI_DOWNLOAD
     # 下载文件，可续传并打印进度
-    wget -t 3 -T 10 --verbose --show-progress=on --progress=bar --no-check-certificate --hsts-file=/tmp/wget-hsts -c "https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip" -O"/tmp/ijava.zip"
+    wget -t 3 -T 10 --verbose --show-progress=on --progress=bar --no-check-certificate --hsts-file=/tmp/wget-hsts -c "${URI_DOWNLOAD}" -O"/tmp/ijava.zip"
 }
 
 # 配置 pyenv 安装 python
