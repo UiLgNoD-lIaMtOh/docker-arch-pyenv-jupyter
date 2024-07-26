@@ -27,7 +27,7 @@
 3.转到 Actions  
 
     -> Clean Git Large Files 并且启动 workflow，实现自动化清理 .git 目录大文件记录  
-    -> Docker Image CI 并且启动 workflow，实现自动化构建镜像并推送云端  
+    -> Docker Image Build and Deploy Images to GHCR CI 并且启动 workflow，实现自动化构建镜像并推送云端  
     -> Remove Old Workflow Runs 并且启动 workflow，实现自动化清理 workflow 并保留最后三个  
     
 4.这是包含了 pyenv 和 jupyter 的 docker 构建材料  
