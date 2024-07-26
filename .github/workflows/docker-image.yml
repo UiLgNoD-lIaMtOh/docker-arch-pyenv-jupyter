@@ -62,7 +62,7 @@ jobs:
     # 构建并上传镜像到仓库
     - name: Build and push
       uses: docker/build-push-action@v6
-      id: docker-pyenv-jupyter
+      id: alpine-pyenv-jupyter
       with:
         provenance: false
         context: .
