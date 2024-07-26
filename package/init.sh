@@ -4,7 +4,11 @@
 # sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 
 # 安装一些必备工具
-apk add --no-cache tzdata
+apk add --no-cache tzdata bash shadow make gcc curl \
+                   font-noto-cjk font-wqy-zenhei sed \
+                   procps grep wget coreutils git bash \
+                   build-base libffi-dev openssl-dev bzip2-dev \
+                   zlib-dev xz-dev readline-dev sqlite-dev tk-dev
 
 # 修改时钟
 date +'%Y-%m-%d %H:%M:%S'
@@ -12,10 +16,7 @@ ln -sfv /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 date +'%Y-%m-%d %H:%M:%S'
 
 # 换成 bash
-apk add --no-cache bash shadow procps grep wget \
-                   font-noto-cjk font-wqy-zenhei \
-                   make gcc sed curl coreutils \
-                   git bash build-base libffi-dev openssl-dev bzip2-dev zlib-dev xz-dev readline-dev sqlite-dev tk-dev
+apk add --no-cache 
 
 chsh -s /bin/bash
 
