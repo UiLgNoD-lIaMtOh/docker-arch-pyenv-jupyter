@@ -16,8 +16,6 @@ ln -sfv /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 date +'%Y-%m-%d %H:%M:%S'
 
 # 换成 bash
-apk add --no-cache 
-
 chsh -s /bin/bash
 
 # 尝试用 bash 环境运行 install.sh
