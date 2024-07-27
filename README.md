@@ -87,8 +87,8 @@
     # 首先访问 http://[主机IP]:8888 输入默认密码 123456
     # 然后如图打开终端 在终端内执行密码修改指令 需输入两次 密码不会显示属于正常现象 密码配置文件会保存到容器内的 $HOME/.jupyter/jupyter_server_config.json 
     jupyter-lab password
-  ![4](https://github.com/user-attachments/assets/b9d0143b-557d-454d-ba32-d54323313905)
-  ![5](https://github.com/user-attachments/assets/0ba38a9c-2c4d-493a-9b02-3ee17e1fc474)
+  ![image](assets/05.jpeg)
+  ![image](assets/06.jpeg)
 
 
 ## 修改新增
